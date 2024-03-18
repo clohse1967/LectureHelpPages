@@ -1,2 +1,2 @@
 # LectureHelpPages
-Collection of George Wigers Chemistry Help Pages
+<b>Collection of George Wigers Chemistry Help Pages</b>
