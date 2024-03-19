@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Exponents</title>
+<script language="JavaScript">
+//global variables
+tried=0
+total=0
+correct=0
+instruct=0
+function clear(){
+document.forms[0].elements[1].value=""
+document.forms[0].elements[2].value=total
+document.forms[0].elements[3].value=correct
+}
+function makenums(){
+total++
+document.forms[0].elements[2].value=total
+tried=0
+c1=0
+c2=0
+while(c1<1){c1=Math.ceil(600*Math.random())/100}
+while(c2<1){c2=Math.ceil(600*Math.random())/100}
+e1=Math.ceil(20*Math.random())
+if(Math.random()>.5){e1=-e1}
+e2=Math.ceil(30*Math.random())
+if(Math.random()>.5){e2=-e2}
+term1=c1+"*10<sup>"+e1+"</sup>"
+term2=c2+"*10<sup>"+e2+"</sup>"
+if(Math.random()<.5){
+    operator="<b>/</b>"
+    key=0
+}
+else{
+    operator="x"
+    key=1
+}
+expression=term1+operator+term2
+getvalue(c1,c2,e1,e2,key)
+var problem=window.open("","problem","menubar=no,scrollbars=yes,,width=200,height=150")
+problem.document.writeln ("<html>");
+problem.document.writeln ("<head>");
+problem.document.writeln ("</head>");
+problem.document.writeln ("<body bgcolor = FFFFFF>");
+problem.document.writeln (expression,"</font><br>");
+problem.document.writeln("<form><input type=text size=4 name='sendit'><input type=button value='Check Answer' onClick='opener.answer(this.form.sendit.value)' </form>");
+problem.document.writeln("<html>");
+problem.document.close();
+problem.focus();
+problem.document.forms[0].elements[1].focus();
+problem.document.forms[0].elements[1].select();
+}
+function getvalue(c1,c2,e1,e2,key){
+if(key==1){
+    if(c1*c2>=10){theanswer=e1+e2+1}
+    else{theanswer=e1+e2}
+}
+else{
+    if(c1>c2){theanswer=e1-e2}
+    else{theanswer=e1-e2-1}
+}
+}
+function answer(ans){
+if(tried==1){
+alert("You've already done this one. Get a new problem")
+}
+else{
+if(tried==2){total++
+document.forms[0].elements[2].value=total}
+if(ans==theanswer){document.forms[0].elements[1].value="correct"
+correct++
+document.forms[0].elements[3].value=correct
+tried=1}
+else{document.forms[0].elements[1].value="incorrect"
+tried=2} 
+}}
+</script>
+</head>
+<body onLoad="clear()">
+<h2>Predicting Exponents</h2>
+This page allows you to practice predicting exponents for basic operations involving
+numbers in scientific notation. <br>
+When you press <B>"New Problem"</B> a window will appear with either a
+multiplication or division problem. In the cell, enter the value of the exponent that results if the
+operation is carried out and the result expressed in proper scientific notation. Then, press
+<B>"Check Answer."</B> Results appear on the main page.<br><br> 
+When the small window appears for the first time, you
+may have to drag it to an empty space. From then on, it will remain out of the way. <br><br>
+<H3>Do not use a calculator on this page or you will defeat its purpose.</H3><br>
+
+Before beginning, enter your name, select your
+instructor and then press the "Submit' button.<br><br>
+<form  METHOD = "POST">
+<input type=button value="New Problem" onClick="makenums()">
+<table border=4>
+<tr>
+<td>Results</td>
+<td>Total</td>
+<td>Correct</td>
+</tr>
+<tr>
+<td><input type=text size=10></td>
+<td align=center><input name="Total" type=text size=3</td>
+<td align=center><input name="Correct" type=text size=3></td>
+</tr>
+</table>
+</form>
+<br><br>
+<a href="index.html"><img src="back.gif"></a><br>
+<a href="mailto:christenelohse@misdmail.org"><img src=email1.gif></a>
+</body>
+</html>
